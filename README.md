@@ -1,6 +1,6 @@
 #  RISC-V based MYTH Workshop 2025
 
-The “RISC-V based MYTH (Microprocessor for You in Thirty Hours)” workshop provides a structured introduction to RISC-V architecture, covering software-to-hardware concepts through hands-on labs. The workshop delves into combinational and sequential logic, pipeline implementation, and microarchitecture of a single-cycle RISC-V CPU. The instructor for this internship is Kunal Ghosh Sir and Steeve Hoover Sir.
+The “RISC-V based MYTH (Microprocessor for You in Thirty Hours)” workshop provides a structured introduction to RISC-V architecture, covering software-to-hardware concepts through hands-on labs. The workshop delves into combinational and sequential logic, pipeline implementation, and microarchitecture of a single-cycle RISC-V CPU. The instructor for this workshop is Kunal Ghosh Sir and Steeve Hoover Sir.
 
 ##  Basic Details
 
