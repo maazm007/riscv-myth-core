@@ -28,6 +28,7 @@ The “RISC-V based MYTH (Microprocessor for You in Thirty Hours)” workshop pr
 
 ### INSTRUCTIONS FORMAT IN RISC-V  
 The instructions format of a processor is the way in which machine language instructions are structured and organized for a processor to execute. It is made up of series of 0s and 1s, each containing information about the location and operation of data.  
+
 There are 6 instruction formats in RISC-V:  
 1. R-format  
 2. I-format  
@@ -85,8 +86,10 @@ riscv64-unknown-elf-objdump -d sum_1ton.o | less
 ```
 *Following are the snapshots that captures the working of above commands*
 
-[PICTURE1]
-[PICTURE2]
+![Pic1](https://github.com/user-attachments/assets/2e121270-f7fe-4b94-883c-1781e8b61c74)  
+
+![Pic2](https://github.com/user-attachments/assets/d76ffad5-0e06-4b94-b1e0-2951eb711223)
+
 
 ### Lab 1(c): SPIKE Simulation and Debugging
 The target is to run the ```sum_1ton.c``` code using both ```gcc compiler``` and ```riscv compiler```, and both of the compiler must display the same output on the terminal. So to compile the code using **gcc compiler**, use the following command:  
@@ -98,10 +101,11 @@ And to compile the code using **riscv compiler**, use the following command:
 ```
 spike pk sum_1ton.o
 ```  
-*Following are the snapshots that captures the working of above commands* 
+*Following are the snapshots that captures the working of above commands*   
 
-[PICTURE3]
-[PICTURE4]
+![Pic3](https://github.com/user-attachments/assets/3b45afdf-5236-4f2c-80fe-50e0aa64fd8b)  
+
+![Pic4](https://github.com/user-attachments/assets/b49863f4-9e89-4e56-bbce-3a60d61701d3)
 
 ### Lab 1(d): Integer Number Representation
 
@@ -129,10 +133,13 @@ int main()
 }
 ```
 
-*Following are the snapshots that captures the calculation of range of signed and unsigned numbers using riscv compiler* 
+*Following are the snapshots that captures the calculation of range of signed and unsigned numbers using riscv compiler*   
 
-[PICTURE5]
-[PICTURE6]
+![Pic5](https://github.com/user-attachments/assets/5516a7fa-5b3c-47f7-b846-de2a97590e2f)  
+
+![Pic6](https://github.com/user-attachments/assets/197f9d2f-73c2-4242-94d0-913e36ba0f80)
+
+
 
 </details>
 
