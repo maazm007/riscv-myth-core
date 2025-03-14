@@ -19,7 +19,7 @@ The “RISC-V based MYTH (Microprocessor for You in Thirty Hours)” workshop pr
 
 * **Flow** = For any instruction to run and execute on the hardware, there is a defined flow that needs to be followed:-
 
-  > HLL(.c file) or Assembly Language Code --> RISC-V Compiler --> Machine Level Language (Binary Form) --> Core performs operation based upon Binary Code. There is an interface present between RISC-V ISA and Hardware is HDL. HDL is use to create RISC-V specifications
+> HLL(.c file) or Assembly Language Code --> RISC-V Compiler --> Machine Level Language (Binary Form) --> Core performs operation based upon Binary Code. There is an interface present between RISC-V ISA and Hardware is HDL. HDL is use to create RISC-V specifications
   
 ### WHAT IS RISC-V?
 * RISC-V is an open-source instruction set architecture (ISA) that allows developers to develop processors for specific applications.  
@@ -43,9 +43,9 @@ There are 6 instruction formats in RISC-V:
 We have to follow the given steps to compile any **.c** file in our machine:  
 1. Open the bash terminal and locate to the directory where you want to create your file. Then run the following command:
 
-	```
-	gedit sum_1ton.c
-	```  
+```
+gedit sum_1ton.c
+```  
 2. This will open the editor and allows you to write into the file that you have created. You have to write the C code of printing the sum of n numbers. Once you are done with your code, press ```Ctrl + S``` to save your file, and then press ```Ctrl + W``` to close the editor.  
 
 ```
@@ -117,7 +117,7 @@ spike pk sum_1ton.o
     Quad Word = 8 bytes = 64 bits
 * RISC-V double word can represent **0 to (2<sup>64 </sup> - 1)**, ie ```0 to 18,446,744,073,709,551,615``` unsigned numbers or postive numbers
 * For n-bits, signed number ranges between **-(2<sup>n - 1</sup>) to (2<sup>n - 1</sup>) - 1**
-> For example: if n = 4 bits, then total signed numbers that can be represented will range from -8 to 7
+    > For example: if n = 4 bits, then total signed numbers that can be represented will range from -8 to 7
 * RISC-V double word can represent ```-9,223,372,036,854,775,808 to 9,223,372,036,854,775,807``` signed numbers
 
 ```
@@ -156,15 +156,19 @@ ABI (application binary interface), as the name says, is an interface, that help
 * RISC-V belongs to *little-endian* memory addressing system. In the RISC-V architecture, a little-endian system stores the least significant byte (LSB) of a multi-byte data type at the lowest memory address, while the most significant byte (MSB) is stored at the highest memory address  
 * As discussed in Module 1, that there are 6 insruction formats in RISC-V architecture. The bit by bit description of each instruction format is shown in the below table:-  
  
-[PICTURE TABLE]  
+![RISCV Instruction Types](https://github.com/user-attachments/assets/955e2ee7-c553-4971-b8f3-e5968f47157b)
+ 
   
 * The ABI performs the System Call through available 32 registers. Each register has their respective ABI names. Following table shows the complete description of ABI Inetrface names of each register:-  
 
-[PICTURE_ABI]   
+<img width="500" alt="ABI" src="https://github.com/user-attachments/assets/88120ab6-ae12-4fd7-8fd8-bc4efca3a901" />
+  
   
 ### Lab 2(a): C Program using Assembly Language   
 We will take the similar program what we did in Lab 1, ie to calculate the sum of numbers from 1 to N. The flowchat that needs to be followed to write the assembly language code of the sum program is as follows:-  
-[FLOWCHART]  
+
+<img width="723" alt="Flowchart" src="https://github.com/user-attachments/assets/dd5a63b6-a9b6-41e6-9bce-5473795d0e28" />
+ 
   
 Now, we will create two different files to code the mentioned flowchart. Using **sum1to9_ASS.c** file we will initialize the variables and pass the values to assembly language program  
 ```
@@ -204,7 +208,8 @@ loop:
 
 Once done, now simply compile the code using riscv compiler and we will get the desired result  
 
-[PICTURE ASSEMBLY OUTPUT]
+![Assembly Output](https://github.com/user-attachments/assets/f35cb19b-2218-4f5a-9896-8db4e8406ec5)
+
 
 </details>
 
