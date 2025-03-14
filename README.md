@@ -148,7 +148,7 @@ int main()
 <details>
 <summary><b>Module 2: Introduction to ABI and Basic Verification Flow</b></summary>
 
-### WHAT IS ABI?
+### What is ABI?
 ABI (application binary interface), as the name says, is an interface, that helps programs access system hardware and services. Some parts of architecture are accessible to Opearting System and some are accessible to Application Program, also called as User and System ISA and User ISA respectively.  
   
 **System Call** is the method through which application programs access some of the ISA of hardware (mainly registers) and the interface that allows the application program to perform this is known as **Application Binary Interface**  
@@ -241,37 +241,37 @@ Here, firstly we will design few basic logic gates and then will try to design t
 
 *Following are the snapshots that captures the design of combinational circuits on Makerchip platform using TL-Verilog* 
 
-* Inverter Circuit  
+* **Inverter Circuit** 
 
 <img width="959" alt="Ckt01_Inverter" src="https://github.com/user-attachments/assets/bd57d2d6-0c5a-44e5-976f-96f814081d5a" />  
 
   
-* AND Circuit  
+* **AND Circuit**  
 
 ![Ckt02_AND](https://github.com/user-attachments/assets/3b82703e-9c68-4717-9ab2-862b93f732d7)
 
 
-* OR Circuit  
+* **OR Circuit**  
 
 ![Ckt03_OR](https://github.com/user-attachments/assets/98a2ab28-c809-4579-b6f5-60d69109c392)
 
 
-* XOR Circuit
+* **XOR Circuit**
 
 ![Ckt04_XOR](https://github.com/user-attachments/assets/5e2bbf9f-7e8f-4da0-889d-637c60617aaf)
 
 
-* Use of Vector (Arrays)
+* **Use of Vector (Arrays)**
 
 <img width="959" alt="Ckt05_Vector" src="https://github.com/user-attachments/assets/2a63976f-7623-43e1-a13a-ae9e97b41f74" />  
 
   
-* Multiplexer Circuit  
+* **Multiplexer Circuit**  
 
 ![Ckt06_Mux](https://github.com/user-attachments/assets/e8f84add-fde5-4e4f-a9db-7fd859b04e24)
 
 
-* Simple Calculator  
+* **Simple Calculator**  
 
 > Here, ```$rand``` function is used to select any random value within the specified range 
  
@@ -282,26 +282,26 @@ Here, firstly we will design few basic logic gates and then will try to design t
 
 Here, we will be using ```>>?``` operator which is known an ```ahead of``` operator. It helps to provide the value of specified signal '?' cycles before, which can be understood as a feedback path or the memory element that stores the last value executed on that signal
 
-* Free Running Counter 
+* **Free Running Counter** 
 
 <img width="959" alt="Ckt08_FreeRunning" src="https://github.com/user-attachments/assets/74da4166-27ac-4dd3-abf1-cceb23066656" />  
 
   
-* Fibonacci Series
+* **Fibonacci Series**
 
 > Here, don't confuse 21 with 15, as 15 is written in hexadecimal format which is actually ```0001_0101 = 16 + 4 + 1 = 21```
 
 <img width="959" alt="Ckt09_Fibonacci" src="https://github.com/user-attachments/assets/e88bca0d-7c7c-435d-8654-3e2b4b916fa4" />  
 
   
-* Sequential Calculator: A real calculator that remembers the last result and use it for next calculation
+* **Sequential Calculator: A real calculator that remembers the last result and use it for next calculation**
 
 <img width="439" alt="Seq_Calci_BD" src="https://github.com/user-attachments/assets/4ac683ba-5223-4bee-b632-f755ae914487" />
  
 <img width="959" alt="Ckt10_SeqCalci" src="https://github.com/user-attachments/assets/a241cae9-55e3-4b1d-b03b-609d64cc7d78" />  
 
   
-* Pythagoras Theorem  
+* **Pythagoras Theorem**  
 
 <img width="959" alt="Ckt11_Pythagoras" src="https://github.com/user-attachments/assets/f2a3a7de-4b5a-4096-839d-ce07a31305c7" />
 
@@ -309,7 +309,7 @@ Here, we will be using ```>>?``` operator which is known an ```ahead of``` opera
 
 * **Validity:** Validity is yet again one of most powerful feature of TL-Verilog. It is defined as ```?$valid``` and the codes falling under this scope is treated like when the signals are valid, it will execute else it will be treated as **Don't Care.** Validity provides Easier Debug, Cleaner Design, Better Error Checking and Automated Clock Gating
 
-* Cyclic Calculator with Validity  
+* **Cyclic Calculator with Validity**  
 
 <img width="418" alt="Cyclic_Calci_BD" src="https://github.com/user-attachments/assets/700e66be-ba9f-4c26-963a-0aeeb731a2e9" />
 
@@ -479,4 +479,4 @@ LW r15, r0, 100
 
 ----------------------
 
-* **Sandbox URL:**
+* **Sandbox URL:** [RISC-V CPU Core](https://myth.makerchip.com/sandbox/0yPfNhRmk/0GZh1q0)
