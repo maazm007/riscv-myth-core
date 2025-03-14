@@ -318,3 +318,118 @@ Here, we will be using ```>>?``` operator which is known an ```ahead of``` opera
 </details>
 
 ---------------------
+
+<details>
+<summary><b>Module 4: Basic RISC-V CPU Microarhitecture</b></summary>
+
+### Designing 3 Stage basic Processor which is based on Opcode Fetch, Decode and Execute
+
+* **Fetch:** Program Counter store the address of instruction that needs to be fetch from the Memory. Processor fetches the instruction from the memory pointed at the address given by Program Counter.
+
+[Ckt15]
+
+* **Decode:** Once the instruction is fetched from the memory, then comes the procedure to understand what does that instruction mean? Decoder Block will come into picture which helps to identify the type of instruction.
+```
+//Decode Logic
+$is_i_instr = $instr[6:2] ==? 5'b0000x || $instr[6:2] ==? 5'b001x0 || $instr[6:2] ==? 5'b11001;
+       //$instr[6:2] ==? 5'b11100; //unused
+         $is_s_instr = $instr[6:2] ==? 5'b0100x;
+         $is_r_instr = $instr[6:2] ==? 5'b011x0 || $instr[6:2] ==? 5'b01011 || $instr[6:2] ==? 5'b10100;
+         $is_u_instr = $instr[6:2] ==? 5'b0x101;
+         $is_b_instr = $instr[6:2] ==? 5'b11000;
+         $is_j_instr = $instr[6:2] ==? 5'b11011;
+         
+//Immediate Decode Logic
+$imm[31:0] = $is_i_instr ? {{21{$instr[31]}},$instr[30:20]} :
+         $is_s_instr ? {{21{$instr[31]}},$instr[30:25],$instr[11:7]} :
+         $is_u_instr ? {$instr[31:12],12'b0} :
+         $is_b_instr ? {{20{$instr[31]}},$instr[7],$instr[30:25],$instr[11:8],1'b0} :
+         $is_j_instr ? {{12{$instr[31]}},$instr[19:12],$instr[20],$instr[30:25],$instr[24:21],1'b0} : 32'b0;
+        
+//Instruction Decode
+         $opcode[6:0] = $instr[6:0];
+         $rd_valid = $is_r_instr || $is_i_instr || $is_u_instr || $is_j_instr;
+         $rs1_valid = $is_r_instr || $is_i_instr || $is_s_instr || $is_b_instr;
+         $rs2_valid = $is_r_instr || $is_s_instr || $is_b_instr;
+         $func3_valid = $is_r_instr || $is_i_instr || $is_s_instr || $is_b_instr;
+         $func7_valid = $is_r_instr;
+         
+         ?$rs1_valid
+            $rs1[4:0] = $instr[19:15];
+         
+         ?$rs2_valid
+            $rs2[4:0] = $instr[24:20];
+         
+         ?$func3_valid
+            $func3[2:0] = $instr[14:12];
+         
+         ?$func7_valid
+            $func7[6:0] = $instr[31:25];
+         
+         ?$rd_valid
+            $rd[4:0] = $instr[11:7];
+```
+* **Register File (RF) Read/Write:** At this stage there are two read operations and one write operation. Two read operation has been used because there two different Source Registers or you can say there are two different operands on which the operation has to be performed. Following are the signals in Regsiter File Read/Write  
+
+> 1- ```$rf_rd_en1``` **Read Enable 1**: While performing read operation on first source register, this signal is logic high  
+> 2- ```$rf_rd_en2``` **Read Enable 2**: While performing read operation on second source register, this signal is logic high  
+> 3- ```$rf_rd_index1[4:0]``` **Read Address 1**: It contain the address from where the data has to be read  
+> 4- ```$rf_rd_index2[4:0]``` **Read Address 2**: It contain the address from where the data has to be read  
+> 5- ```$rf_wr_en``` **Write Enable**: While performing write operation on first source register, this signal is logic high  
+> 6- ```$rf_wr_index[4:0]``` **Write Address**: It contain the address where data has to be written  
+> 7- ```$rf_wr_data[31:0]``` **Write Data**: It contains the data that has to be written on Write Address  
+
+* **Execute**: Once the data has been read from Source Registers, now comes the operation of execution based upon the Opcode. The execution operation is performed by **Arithmetic Logic Unit (ALU)**  
+```
+//ALU Operation
+$sltu_result = $src1_value < $src2_value;
+$sltiu_result = $src1_value < $imm;
+         
+$result[31:0] = $is_addi ? $src1_value + $imm :
+     $is_add ? $src1_value + $src2_value : 
+     $is_andi ? $src1_value & $imm :
+     $is_xori ? $src1_value ^ $imm :
+     $is_ori ? $src1_value | $imm :
+     $is_slli ? $src1_value << $imm[5:0] : 
+     $is_srli ? $src1_value >> $imm[5:0] :
+     $is_and ? $src1_value & $src2_value :
+     $is_xor ? $src1_value ^ $src2_value :
+     $is_or ? $src1_value | $src2_value : 
+     $is_sub ? $src1_value - $src2_value : 
+     $is_sll ? $src1_value << $src2_value[4:0] : 
+     $is_srl ? $src1_value >> $src2_value[4:0] :
+     $is_sltu ? $src1_value < $src2_value :
+     $is_lui ? {$imm[31:12],12'b0} :
+     $is_auipc ? $pc + $imm : 
+     $is_jal ? $pc + $imm :
+     $is_jalr ? $pc + $imm :
+     $is_srai ? {{32{$src1_value[31]}},$src1_value} >> $imm[4:0] :
+     $is_sra ? {{32{$src1_value[31]}},$src1_value} >> $src2_value[4:0] :
+     $is_slt ? ($src1_value[31] == $src2_value[31]) ? $sltu_result : {31'b0,$src1_value[31]} :
+     $is_slti ? ($src1_value[31] == $imm[31]) ? $sltiu_result : {31'b0,$src1_value[31]} :
+     $is_sltiu ? $src1_value < $imm : 32'bx;
+```     
+   
+[Ckt18]
+
+* **Control Logic**: While decoding and executing, Branch Target Address is also updated. If any branch instruction is found, it's address will be hooked up in the Program Counter Multiplexer  
+```
+//Branching Instructions
+$taken_br = $is_beq ? ($src1_value == $src2_value) :
+     $is_bne ? ($src1_value != $src2_value) :
+     $is_blt ? (($src1_value < $src2_value) ^ ($src1_value[31] != $src2_value[31])) :
+     $is_bge ? (($src1_value >= $src2_value) ^ ($src1_value[31] != $src2_value[31])) :
+     $is_bltu ? ($src1_value < $src2_value) :
+     $is_bgeu ? ($src1_value >= $src2_value) : 1'b0;
+$valid_taken_br = $valid && $taken_br;
+```  
+
+*Following is the snapshot after completing 3 stage RISC-V Core. At this point, our Visualization Diagram (VIZ) must be producing the result of summation which ultimately gets stored in register10*  
+
+[Ckt19]  
+
+[Ckt16]  
+
+</details> 
+
+------------------
