@@ -227,12 +227,12 @@ Once done, now simply compile the code using riscv compiler and we will get the 
 > TL-Verilog is a Verilog implementation of TL-X, a language extension defined as a wrapper to any HDL to extend it with transaction-level modeling. This makes it more powerful and has a significant code reduction as compared to other HDL languages
 
 ### Advantages of TL-Verilog over Verilog HDL?
-> 1. Introduces simpler syntax unlike other HDL like System Verilog or Verilog, hence reduces the number of lines in a code resulting in fewer bugs.  
-2. Is more flexible. Easier to optimize your logic without bugs.
-3. Is “timing abstract” for pipelines, which makes retiming easy and safe.
-4. Knows when signals are valid, which provides easier debug, cleaner design, better error checking, and automated clock gating.
-5. Visual Debug (VIZ) is an additional feature to the Makerchip platform which makes the debugging process much easier.
-6. It supports “Transactions” and a simpler form of design hierarchy.
+> 1) Introduces simpler syntax unlike other HDL like System Verilog or Verilog, hence reduces the number of lines in a code resulting in fewer bugs.  
+> 2) Is more flexible. Easier to optimize your logic without bugs.
+> 3) Is “timing abstract” for pipelines, which makes retiming easy and safe.
+> 4) Knows when signals are valid, which provides easier debug, cleaner design, better error checking, and automated clock gating.
+> 5) Visual Debug (VIZ) is an additional feature to the Makerchip platform which makes the debugging process much easier.
+> 6) It supports “Transactions” and a simpler form of design hierarchy.
 
 ### Lab 3(a): Combinational Logic
 Here, firstly we will design few basic logic gates and then will try to design the circuit that performs mathenatical calculations like finding the value of longest side of right-angled triangle using Pythagoras Theorem. And at last we will be combining all the combinational logic to design the Calculator
@@ -243,33 +243,40 @@ Here, firstly we will design few basic logic gates and then will try to design t
 
 * Inverter Circuit  
 
-[Ckt01]
+<img width="959" alt="Ckt01_Inverter" src="https://github.com/user-attachments/assets/bd57d2d6-0c5a-44e5-976f-96f814081d5a" />
+
 
 * AND Circuit  
 
-[Ckt02]
+![Ckt02_AND](https://github.com/user-attachments/assets/3b82703e-9c68-4717-9ab2-862b93f732d7)
+
 
 * OR Circuit  
 
-[Ckt03]
+![Ckt03_OR](https://github.com/user-attachments/assets/98a2ab28-c809-4579-b6f5-60d69109c392)
+
 
 * XOR Circuit
 
-[Ckt04]
+![Ckt04_XOR](https://github.com/user-attachments/assets/5e2bbf9f-7e8f-4da0-889d-637c60617aaf)
+
 
 * Use of Vector (Arrays)
 
-[Ckt05]
+<img width="959" alt="Ckt05_Vector" src="https://github.com/user-attachments/assets/2a63976f-7623-43e1-a13a-ae9e97b41f74" />
+
 
 * Multiplexer Circuit  
 
-[Ckt06]
+![Ckt06_Mux](https://github.com/user-attachments/assets/e8f84add-fde5-4e4f-a9db-7fd859b04e24)
+
 
 * Simple Calculator  
 
 > Here, ```$rand``` function is used to select any random value within the specified range 
  
-[Ckt07]
+<img width="959" alt="Ckt07_Calculator" src="https://github.com/user-attachments/assets/73810da4-72f3-48cd-a080-396865352f53" />
+
 
 ### Lab 3(b): Sequential Logic
 
@@ -277,23 +284,23 @@ Here, we will be using ```>>?``` operator which is known an ```ahead of``` opera
 
 * Free Running Counter 
 
-[Ckt08]
+<img width="959" alt="Ckt08_FreeRunning" src="https://github.com/user-attachments/assets/74da4166-27ac-4dd3-abf1-cceb23066656" />
 
 * Fibonacci Series
 
 > Here, don't confuse 21 with 15, as 15 is written in hexadecimal format which is actually ```0001_0101 = 16 + 4 + 1 = 21```
 
-[Ckt09]
+<img width="959" alt="Ckt09_Fibonacci" src="https://github.com/user-attachments/assets/e88bca0d-7c7c-435d-8654-3e2b4b916fa4" />
 
 * Sequential Calculator: A real calculator that remembers the last result and use it for next calculation
 
-[Seq_Calci_BD]  
-
-[Ckt10]
+<img width="439" alt="Seq_Calci_BD" src="https://github.com/user-attachments/assets/4ac683ba-5223-4bee-b632-f755ae914487" />
+ 
+<img width="959" alt="Ckt10_SeqCalci" src="https://github.com/user-attachments/assets/a241cae9-55e3-4b1d-b03b-609d64cc7d78" />
 
 * Pythagoras Theorem  
 
-[Ckt11]
+<img width="959" alt="Ckt11_Pythagoras" src="https://github.com/user-attachments/assets/f2a3a7de-4b5a-4096-839d-ce07a31305c7" />
 
 * **Pipelined Logic:** Timing Abstract and Staging is one of the most powerful feature of TL-Verilog. Each pipelined stage is defined as ```@?``` and the codes written under this scope, falls in the same stage. Pipelining also helps to operate the circuit at high frequency as the computation of signals gets distributed in various stages.
 
@@ -301,9 +308,9 @@ Here, we will be using ```>>?``` operator which is known an ```ahead of``` opera
 
 * Cyclic Calculator with Validity  
 
-[CYCLIC_CALCI_BD]
+<img width="418" alt="Cyclic_Calci_BD" src="https://github.com/user-attachments/assets/700e66be-ba9f-4c26-963a-0aeeb731a2e9" />
 
-[Ckt14]
+<img width="959" alt="Ckt14_CycleCalciValidity" src="https://github.com/user-attachments/assets/e29ead03-6c8c-4095-895c-b6d79836ba60" />
 
 </details>
 
