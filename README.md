@@ -214,3 +214,97 @@ Once done, now simply compile the code using riscv compiler and we will get the 
 </details>
 
 ------
+
+
+<details>
+<summary><b>Module 3: Digital Logic with TL-Verilog and Makerchip</b></summary>  
+
+### What is Makerchip?
+  
+> Makerchip is a free, online integrated development environment (IDE) for digital logic design, primarily focused on Verilog and Transaction-Level Verilog (TL-Verilog), allowing users to code, compile, simulate, and debug designs directly in their browser  
+  
+### What is TL-Verilog?   
+> TL-Verilog is a Verilog implementation of TL-X, a language extension defined as a wrapper to any HDL to extend it with transaction-level modeling. This makes it more powerful and has a significant code reduction as compared to other HDL languages
+
+### Advantages of TL-Verilog over Verilog HDL?
+> 1. Introduces simpler syntax unlike other HDL like System Verilog or Verilog, hence reduces the number of lines in a code resulting in fewer bugs.  
+2. Is more flexible. Easier to optimize your logic without bugs.
+3. Is “timing abstract” for pipelines, which makes retiming easy and safe.
+4. Knows when signals are valid, which provides easier debug, cleaner design, better error checking, and automated clock gating.
+5. Visual Debug (VIZ) is an additional feature to the Makerchip platform which makes the debugging process much easier.
+6. It supports “Transactions” and a simpler form of design hierarchy.
+
+### Lab 3(a): Combinational Logic
+Here, firstly we will design few basic logic gates and then will try to design the circuit that performs mathenatical calculations like finding the value of longest side of right-angled triangle using Pythagoras Theorem. And at last we will be combining all the combinational logic to design the Calculator
+
+* One of the greatest advantage I feel using TL-Verilog is that we don't have to apply test inputs to our design to verify the simulation, it automatically applies random stimulus.  
+
+*Following are the snapshots that captures the design of combinational circuits on Makerchip platform using TL-Verilog* 
+
+* Inverter Circuit  
+
+[Ckt01]
+
+* AND Circuit  
+
+[Ckt02]
+
+* OR Circuit  
+
+[Ckt03]
+
+* XOR Circuit
+
+[Ckt04]
+
+* Use of Vector (Arrays)
+
+[Ckt05]
+
+* Multiplexer Circuit  
+
+[Ckt06]
+
+* Simple Calculator  
+
+> Here, ```$rand``` function is used to select any random value within the specified range 
+ 
+[Ckt07]
+
+### Lab 3(b): Sequential Logic
+
+Here, we will be using ```>>?``` operator which is known an ```ahead of``` operator. It helps to provide the value of specified signal '?' cycles before, which can be understood as a feedback path or the memory element that stores the last value executed on that signal
+
+* Free Running Counter 
+
+[Ckt08]
+
+* Fibonacci Series
+
+> Here, don't confuse 21 with 15, as 15 is written in hexadecimal format which is actually ```0001_0101 = 16 + 4 + 1 = 21```
+
+[Ckt09]
+
+* Sequential Calculator: A real calculator that remembers the last result and use it for next calculation
+
+[Seq_Calci_BD]  
+
+[Ckt10]
+
+* Pythagoras Theorem  
+
+[Ckt11]
+
+* **Pipelined Logic:** Timing Abstract and Staging is one of the most powerful feature of TL-Verilog. Each pipelined stage is defined as ```@?``` and the codes written under this scope, falls in the same stage. Pipelining also helps to operate the circuit at high frequency as the computation of signals gets distributed in various stages.
+
+* **Validity:** Validity is yet again one of most powerful feature of TL-Verilog. It is defined as ```?$valid``` and the codes falling under this scope is treated like when the signals are valid, it will execute else it will be treated as **Don't Care.** Validity provides Easier Debug, Cleaner Design, Better Error Checking and Automated Clock Gating
+
+* Cyclic Calculator with Validity  
+
+[CYCLIC_CALCI_BD]
+
+[Ckt14]
+
+</details>
+
+---------------------
