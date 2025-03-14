@@ -461,20 +461,20 @@ SW r0, r10, 100
 LW r15, r0, 100
 ```  
 
-[Final1]  
-  
-[Final2]  
-  
-[Final3]
+<img width="559" alt="Final1" src="https://github.com/user-attachments/assets/704d5b3c-9237-4c17-b922-2c1306255d41" />
+ 
+<img width="570" alt="Final2" src="https://github.com/user-attachments/assets/1962d12c-149f-4d63-80df-51f1053472df" />
+ 
+<img width="494" alt="Final3" src="https://github.com/user-attachments/assets/0c1bd5d7-77c6-4877-9865-a1ef2074b707" />
 
 *Following is the snapshot that shows the final waveform of output*  
 
-[WaveShowingSum]  
-  
+<img width="959" alt="Wave_Showing_Sum" src="https://github.com/user-attachments/assets/0cf587e6-0df7-4918-adba-96e6337e4257" />
+
 *Below is the snapshot of complete RISC-V CPU Core*  
 
-[FinalCPU]  
-
+<img width="959" alt="Final_CPU_Core" src="https://github.com/user-attachments/assets/0fece869-c289-458d-9d9f-ce16e0686aee" />
+  
 </details>
 
 ----------------------
