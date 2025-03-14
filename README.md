@@ -373,11 +373,17 @@ $imm[31:0] = $is_i_instr ? {{21{$instr[31]}},$instr[30:20]} :
 * **Register File (RF) Read/Write:** At this stage there are two read operations and one write operation. Two read operation has been used because there two different Source Registers or you can say there are two different operands on which the operation has to be performed. Following are the signals in Regsiter File Read/Write  
 
 > 1- ```$rf_rd_en1``` **Read Enable 1**: While performing read operation on first source register, this signal is logic high  
+
 > 2- ```$rf_rd_en2``` **Read Enable 2**: While performing read operation on second source register, this signal is logic high  
+
 > 3- ```$rf_rd_index1[4:0]``` **Read Address 1**: It contain the address from where the data has to be read  
+
 > 4- ```$rf_rd_index2[4:0]``` **Read Address 2**: It contain the address from where the data has to be read  
+
 > 5- ```$rf_wr_en``` **Write Enable**: While performing write operation on first source register, this signal is logic high  
+
 > 6- ```$rf_wr_index[4:0]``` **Write Address**: It contain the address where data has to be written  
+
 > 7- ```$rf_wr_data[31:0]``` **Write Data**: It contains the data that has to be written on Write Address  
 
 * **Execute**: Once the data has been read from Source Registers, now comes the operation of execution based upon the Opcode. The execution operation is performed by **Arithmetic Logic Unit (ALU)**  
