@@ -437,3 +437,46 @@ $valid_taken_br = $valid && $taken_br;
 </details> 
 
 ------------------
+
+<details>  
+<summary><b>Module 5: Complete Pipelined RISC-V CPU Microarchitecture</b></summary>  
+
+* Now we want to increase the performance of our CPU and make it capable to operate at higher frequencies. So to acheive this functionality, we will use Pipelining of 5 stages. But, while executing the pipelining, two problems comes into the picture which is also known as **Hazards**    
+
+There are two types of Harards:-
+> 1- **Control Flow Hazard:** In pipelined processors, control flow hazards, also known as branch hazards, occur when the next instruction to be executed depends on the outcome of a previous instruction (like a conditional branch or jump), causing pipeline stalls and performance degradation.  
+
+> 2- **Read After Write Hazard:** In RISC-V, a Read-After-Write (RAW) hazard occurs when an instruction needs to read a register before a previous instruction has finished writing to it. This can lead to incorrect data being read, and can be mitigated through techniques like pipeline stalling or forwarding. 
+
+* **Solution for Read After Write Hazard** is to introduce Register File Bypass. Instead of taking the write data for next instruction, we will bypass the path and take the data that was read before write and make it input to the next instruction  
+* The last step is to complete the ALU Instructions, Instruction Decode and add Load Instruction, Store Instruction, Jump Instructions.
+* **Testcase:** Added test case to check fucntionality of load/store. Stored the summation of 1 to 9 on address 4 of Data Memory and loaded that value from Data Memory to r15  
+```
+*passed = |cpu/xreg[15]>>5$value == (1+2+3+4+5+6+7+8+9);
+```  
+  
+*Following are the snapshots that shows the Load Operation, Store Operation and Summation operation after completing the design of RISC-V CPU Core Microarchitecture*   
+```
+SW r0, r10, 100
+LW r15, r0, 100
+```  
+
+[Final1]  
+  
+[Final2]  
+  
+[Final3]
+
+*Following is the snapshot that shows the final waveform of output*  
+
+[WaveShowingSum]  
+  
+*Below is the snapshot of complete RISC-V CPU Core*  
+
+[FinalCPU]  
+
+</details>
+
+----------------------
+
+* **Sandbox URL:**
