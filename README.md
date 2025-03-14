@@ -326,8 +326,9 @@ Here, we will be using ```>>?``` operator which is known an ```ahead of``` opera
 
 * **Fetch:** Program Counter store the address of instruction that needs to be fetch from the Memory. Processor fetches the instruction from the memory pointed at the address given by Program Counter.
 
-[Ckt15]
+<img width="959" alt="Ckt15_InstructionFetch" src="https://github.com/user-attachments/assets/a66f1387-1e34-48b1-afa6-20519af28350" />
 
+  
 * **Decode:** Once the instruction is fetched from the memory, then comes the procedure to understand what does that instruction mean? Decoder Block will come into picture which helps to identify the type of instruction.
 ```
 //Decode Logic
@@ -410,8 +411,10 @@ $result[31:0] = $is_addi ? $src1_value + $imm :
      $is_sltiu ? $src1_value < $imm : 32'bx;
 ```     
    
-[Ckt18]
+<img width="677" alt="Ckt18_ALU" src="https://github.com/user-attachments/assets/89ada2ab-ddfe-4b6e-95cd-03785e64e4e2" />  
 
+
+    
 * **Control Logic**: While decoding and executing, Branch Target Address is also updated. If any branch instruction is found, it's address will be hooked up in the Program Counter Multiplexer  
 ```
 //Branching Instructions
@@ -426,9 +429,10 @@ $valid_taken_br = $valid && $taken_br;
 
 *Following is the snapshot after completing 3 stage RISC-V Core. At this point, our Visualization Diagram (VIZ) must be producing the result of summation which ultimately gets stored in register10*  
 
-[Ckt19]  
+<img width="959" alt="Ckt19_3_Stage_RISCV" src="https://github.com/user-attachments/assets/972d2875-7e26-485c-8cb2-2d7231428268" />  
 
-[Ckt16]  
+<img width="959" alt="Ckt16_SumVerified" src="https://github.com/user-attachments/assets/c14ca711-ecc9-45f2-8044-8643cb3455a5" />
+
 
 </details> 
 
