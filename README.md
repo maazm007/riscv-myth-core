@@ -243,9 +243,9 @@ Here, firstly we will design few basic logic gates and then will try to design t
 
 * Inverter Circuit  
 
-<img width="959" alt="Ckt01_Inverter" src="https://github.com/user-attachments/assets/bd57d2d6-0c5a-44e5-976f-96f814081d5a" />
+<img width="959" alt="Ckt01_Inverter" src="https://github.com/user-attachments/assets/bd57d2d6-0c5a-44e5-976f-96f814081d5a" />  
 
-
+  
 * AND Circuit  
 
 ![Ckt02_AND](https://github.com/user-attachments/assets/3b82703e-9c68-4717-9ab2-862b93f732d7)
@@ -263,9 +263,9 @@ Here, firstly we will design few basic logic gates and then will try to design t
 
 * Use of Vector (Arrays)
 
-<img width="959" alt="Ckt05_Vector" src="https://github.com/user-attachments/assets/2a63976f-7623-43e1-a13a-ae9e97b41f74" />
+<img width="959" alt="Ckt05_Vector" src="https://github.com/user-attachments/assets/2a63976f-7623-43e1-a13a-ae9e97b41f74" />  
 
-
+  
 * Multiplexer Circuit  
 
 ![Ckt06_Mux](https://github.com/user-attachments/assets/e8f84add-fde5-4e4f-a9db-7fd859b04e24)
@@ -284,20 +284,23 @@ Here, we will be using ```>>?``` operator which is known an ```ahead of``` opera
 
 * Free Running Counter 
 
-<img width="959" alt="Ckt08_FreeRunning" src="https://github.com/user-attachments/assets/74da4166-27ac-4dd3-abf1-cceb23066656" />
+<img width="959" alt="Ckt08_FreeRunning" src="https://github.com/user-attachments/assets/74da4166-27ac-4dd3-abf1-cceb23066656" />  
 
+  
 * Fibonacci Series
 
 > Here, don't confuse 21 with 15, as 15 is written in hexadecimal format which is actually ```0001_0101 = 16 + 4 + 1 = 21```
 
-<img width="959" alt="Ckt09_Fibonacci" src="https://github.com/user-attachments/assets/e88bca0d-7c7c-435d-8654-3e2b4b916fa4" />
+<img width="959" alt="Ckt09_Fibonacci" src="https://github.com/user-attachments/assets/e88bca0d-7c7c-435d-8654-3e2b4b916fa4" />  
 
+  
 * Sequential Calculator: A real calculator that remembers the last result and use it for next calculation
 
 <img width="439" alt="Seq_Calci_BD" src="https://github.com/user-attachments/assets/4ac683ba-5223-4bee-b632-f755ae914487" />
  
-<img width="959" alt="Ckt10_SeqCalci" src="https://github.com/user-attachments/assets/a241cae9-55e3-4b1d-b03b-609d64cc7d78" />
+<img width="959" alt="Ckt10_SeqCalci" src="https://github.com/user-attachments/assets/a241cae9-55e3-4b1d-b03b-609d64cc7d78" />  
 
+  
 * Pythagoras Theorem  
 
 <img width="959" alt="Ckt11_Pythagoras" src="https://github.com/user-attachments/assets/f2a3a7de-4b5a-4096-839d-ce07a31305c7" />
