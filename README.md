@@ -147,3 +147,65 @@ int main()
 
 <details>
 <summary><b>Module 2: Introduction to ABI and Basic Verification Flow</b></summary>
+
+### WHAT IS ABI?
+ABI (application binary interface), as the name says, is an interface, that helps programs access system hardware and services. Some parts of architecture are accessible to Opearting System and some are accessible to Application Program, also called as User and System ISA and User ISA respectively.  
+  
+**System Call** is the method through which application programs access some of the ISA of hardware (mainly registers) and the interface that allows the application program to perform this is known as **Application Binary Interface**  
+  
+* RISC-V belongs to *little-endian* memory addressing system. In the RISC-V architecture, a little-endian system stores the least significant byte (LSB) of a multi-byte data type at the lowest memory address, while the most significant byte (MSB) is stored at the highest memory address  
+* As discussed in Module 1, that there are 6 insruction formats in RISC-V architecture. The bit by bit description of each instruction format is shown in the below table:-  
+ 
+[PICTURE TABLE]  
+  
+* The ABI performs the System Call through available 32 registers. Each register has their respective ABI names. Following table shows the complete description of ABI Inetrface names of each register:-  
+
+[PICTURE_ABI]   
+  
+### Lab 2(a): C Program using Assembly Language   
+We will take the similar program what we did in Lab 1, ie to calculate the sum of numbers from 1 to N. The flowchat that needs to be followed to write the assembly language code of the sum program is as follows:-  
+[FLOWCHART]  
+  
+Now, we will create two different files to code the mentioned flowchart. Using **sum1to9_ASS.c** file we will initialize the variables and pass the values to assembly language program  
+```
+#include<stdio.h>
+
+extern int sum1to9_ASS (int x, int y);
+
+int main()
+{
+	int result = 0;
+	int count = 9;
+	result = sum1to9_ASS(0x0, count+1);
+	printf("Sum of number from 1 to %d is %d\n", count, result);
+	return 0;
+}
+```  
+  
+  Create another file that has been called in the .c program file as **sum1to9_ASS.S** and write the assembly language code
+  
+```
+.section .text
+.global load
+.type load, @function
+
+load:
+        add     a4, a0, zero //Initialize the sum register a4 with 0x0
+        add     a2, a0, a1   //Store the count of 10 in register a2. Register a1 is loaded with ax0 from main
+        add     a3, a0, zero //Initialize the intermediate sum regsiter a3 by 0x0
+
+loop:
+        add     a4, a3, a4   //Increament addition
+        addi    a3, a3, 1    //Increament intermediate register by 1
+        blt     a3, a2, loop //If a3 is less than a2, go to the branch named as <loop>
+        add     a0, a4, zero //Store the final result to a0 register which will be read by main program
+        ret  
+```
+
+Once done, now simply compile the code using riscv compiler and we will get the desired result  
+
+[PICTURE ASSEMBLY OUTPUT]
+
+</details>
+
+------
