@@ -468,10 +468,10 @@ LW r15, r0, 100
 ```  
 
 <img width="559" alt="Final1" src="https://github.com/user-attachments/assets/704d5b3c-9237-4c17-b922-2c1306255d41" />
- 
-<img width="570" alt="Final2" src="https://github.com/user-attachments/assets/1962d12c-149f-4d63-80df-51f1053472df" />
- 
-<img width="494" alt="Final3" src="https://github.com/user-attachments/assets/0c1bd5d7-77c6-4877-9865-a1ef2074b707" />
+
+<img width="638" alt="Final2" src="https://github.com/user-attachments/assets/55cdaccc-31ed-4147-895c-7df6a260c558" />
+
+<img width="505" alt="Final3" src="https://github.com/user-attachments/assets/4979ff15-0787-489b-94bc-13df9078c2a6" />
 
 *Following is the snapshot that shows the final waveform of output*  
 
@@ -485,7 +485,7 @@ LW r15, r0, 100
 
 ----------------------
 
-* **Sandbox URL:** [RISC-V CPU Core](https://myth.makerchip.com/sandbox/0yPfNhRmk/0GZh1q0)    
+* **Sandbox URL:** [RISC-V CPU Core](https://www.makerchip.com/sandbox/0zpfRhK08/0KOh29Z#)    
   
 ---------------------  
   
