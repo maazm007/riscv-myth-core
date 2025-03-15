@@ -32,7 +32,7 @@
    m4_asm(ADDI, r13, r13, 1)            // Increment intermediate register by 1
    m4_asm(BLT, r13, r12, 1111111111000) // If a3 is less than a2, branch to label named <loop>
    m4_asm(ADD, r10, r14, r0)            // Store final result to register a0 so that it can be read by main program
-   m4_asm(SW, r0, r10, 100)             //Store the value of r10 into address 4
+   m4_asm(SW, r0, r10, 100)             //Store the value of r10 into address 4 with immediate value 0
    m4_asm(LW, r15, r0, 100)             //Load the value from address 4 to r15
    
    // Optional:
@@ -69,7 +69,7 @@
          
          //Immediate Decode Logic
          $imm[31:0] = $is_i_instr ? {{21{$instr[31]}},$instr[30:20]} :
-                      $is_s_instr ? {{21{$instr[31]}},$instr[30:25],$instr[11:7]} :
+                      $is_s_instr ? {{21{$instr[31]}},$instr[30:25],$instr[11:8],$instr[7]} :
                       $is_u_instr ? {$instr[31:12],12'b0} :
                       $is_b_instr ? {{20{$instr[31]}},$instr[7],$instr[30:25],$instr[11:8],1'b0} :
                       $is_j_instr ? {{12{$instr[31]}},$instr[19:12],$instr[20],$instr[30:25],$instr[24:21],1'b0} : 32'b0;
@@ -149,22 +149,22 @@
       
       @2   
          //Register File Read
-         $rf_rd_en1 = $rs1_valid ? 1'b1 : 1'b0;
+         $rf_rd_en1 = $rs1_valid;
          ?$rf_rd_en1
             //$src1_value[31:0] = $rf_rd_data1[31:0];
-            $rf_rd_index1[4:0] = $rs1;
+            $rf_rd_index1[4:0] = $rs1[4:0];
          
-         $rf_rd_en2 = $rs2_valid ? 1'b1 : 1'b0;
+         $rf_rd_en2 = $rs2_valid;
          ?$rf_rd_en2
             //$src2_value[31:0] = $rf_rd_data2[31:0];
             $rf_rd_index2[4:0] = $rs2;
-            
+         
          $br_tgt_pc[31:0] = $imm + $pc;
          $jalr_tgt_pc[31:0] = $imm + $src1_value;
          
          //Register File Bypass
-         $src1_value[31:0] = ((>>1$rf_wr_en) && (>>1$rd == $rs1)) ? >>1$result : $rf_rd_data1[31:0]; 
-         $src2_value[31:0] = ((>>1$rf_wr_en) && (>>1$rd == $rs2)) ? >>1$result : $rf_rd_data2[31:0];      
+         $src1_value[31:0] = ((>>1$rf_wr_en) && (>>1$rd == $rs1)) ? >>1$result : $rf_rd_data1[31:0];
+         $src2_value[31:0] = ((>>1$rf_wr_en) && (>>1$rd == $rs2)) ? >>1$result : $rf_rd_data2[31:0];
       
       @3   
          //ALU Operation
@@ -187,18 +187,19 @@
                          $is_sltu ? $src1_value < $src2_value :
                          $is_lui ? {$imm[31:12],12'b0} :
                          $is_auipc ? $pc + $imm : 
-                         $is_jal ? $pc + $imm :
-                         $is_jalr ? $pc + $imm :
+                         $is_jal ? $pc + 4 :
+                         $is_jalr ? $pc + 4 :
                          $is_srai ? {{32{$src1_value[31]}},$src1_value} >> $imm[4:0] :
                          $is_sra ? {{32{$src1_value[31]}},$src1_value} >> $src2_value[4:0] :
                          $is_slt ? ($src1_value[31] == $src2_value[31]) ? $sltu_result : {31'b0,$src1_value[31]} :
                          $is_slti ? ($src1_value[31] == $imm[31]) ? $sltiu_result : {31'b0,$src1_value[31]} :
-                         $is_sltiu ? $src1_value < $imm : 32'bx;
+                         $is_sltiu ? $src1_value < $imm : 
+                         ($is_load || $is_s_instr) ? $src1_value + $imm : 32'bx;
          
          //Register File Write
          $rf_wr_en = (($rd[4:0] != 5'b0) && ($rd_valid) && ($valid)) || >>2$valid_load; //Disable Write when $rd is 0 and Enable when it is Valid
          ?$rf_wr_en
-            $rf_wr_index[4:0] = $rd[4:0];
+            $rf_wr_index[4:0] = $valid ? $rd[4:0] : >>2$rd[4:0];
             $rf_wr_data[31:0] = $valid ? $result : >>2$ld_data[31:0];
          
          //Branching Instructions
@@ -217,13 +218,14 @@
          $valid = !(>>1$valid_taken_br || >>2$valid_taken_br || >>1$valid_load || >>2$valid_load || >>1$valid_jump || >>2$valid_jump);
       
       @4
-         $dmem_rd_en = $valid_load;
+         $dmem_rd_en = $is_load;
          $dmem_wr_en = $is_s_instr && $valid;
          $dmem_addr[3:0] = $result[5:2];
          $dmem_wr_data[31:0] = $src2_value[31:0];
       
       @5
          $ld_data[31:0] = $dmem_rd_data[31:0];
+         `BOGUS_USE($is_beq $is_bne $is_blt $is_bge $is_bltu $is_bgeu)
       
    
    // Assert these to end simulation (before Makerchip cycle limit).
