@@ -491,4 +491,5 @@ LW r15, r0, 100
   
 ### **Final Image of RISC-V CPU Core**
 
-![RISCV-CPU-CORE](https://github.com/user-attachments/assets/7c0a1469-4454-4a5c-9044-a5f7a77e1111)
+![RISCV-CORE](https://github.com/user-attachments/assets/3c95b4e6-aeba-4fca-932b-821f6256e3a5)
+
