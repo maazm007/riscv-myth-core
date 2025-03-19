@@ -479,8 +479,8 @@ LW r15, r0, 100
 
 *Following is the snapshot of complete RISC-V CPU Core*  
 
-<img width="959" alt="Final_CPU_Core" src="https://github.com/user-attachments/assets/0fece869-c289-458d-9d9f-ce16e0686aee" />
-  
+<img width="959" alt="Last" src="https://github.com/user-attachments/assets/29177ce8-967b-46ff-8144-ebda632f9e8b" />
+
 </details>
 
 ----------------------
